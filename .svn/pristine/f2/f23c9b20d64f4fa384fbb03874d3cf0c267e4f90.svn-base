@@ -1,9 +1,0 @@
-#map{
-    height: 200px;
-}
-
-.msg_cnt {
-    outline: none;
-    border-bottom: 1px solid #eee;
-    min-height: 50px;
-}
