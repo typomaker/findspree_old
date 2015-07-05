@@ -1,0 +1,15 @@
+<div class="col-md-6 masonry-item">
+	<div class="panel panel-default">
+		<div class="panel-body item">
+			<h3><%= dt.name%></h3>
+			<p class="small">
+				<%= Helper.string.prune(dt.description,140)%>
+			</p>
+			<div class="row">
+				<a href="<%= dt.link.view%>">
+					<img src="<%=dt.img.main%>" class="img-responsive"  alt=""/>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>

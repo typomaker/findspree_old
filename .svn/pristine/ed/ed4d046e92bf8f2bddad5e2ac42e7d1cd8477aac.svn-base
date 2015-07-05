@@ -1,0 +1,39 @@
+<?php
+/* @var $this yii\web\View */
+
+\frontend\assets\EventListAsset::register($this);
+$this->title = 'Ближайшие события';
+Yii::$app->view->registerMetaTag([
+	'name'=>"description",
+	'itemprop'=>"description",
+	'content'=> 'Поиск интересных мероприятий на ближайшую неделю.'
+]);
+Yii::$app->view->registerMetaTag([
+	'name'=>"keywords",
+	'itemprop'=>'keywords',
+	'content'=> 'москва,сегодня,мероприятия,события,отдых,вечеринка'
+]);
+?>
+<div class="row">
+    <div class="col-md-4">
+        <?= \frontend\widgets\EventsCalendar::widget(); ?>
+    </div>
+	<div class="col-md-4"></div>
+	<div class="col-md-4">
+		<div id="event-search" class="input-group" title="Поиск по тегам">
+			<i class="md md-search"></i>
+			<input type="text" class="form-control input-tag" placeholder="Теги">
+		</div>
+	</div>
+</div>
+<div class="row">
+    <div id="events-container">
+    </div>
+</div>
+<script id="tpl-event-item" data-remote="<?= \yii\helpers\Url::to(['event/index']); ?>" type="text/html">
+	<div class="col-sm-6 col-xs-12 col-md-4 col-lg-3  item">
+		<?= $this->renderFile('@app/views/tpl/event-box.php'); ?>
+	</div>
+</script>
+
+

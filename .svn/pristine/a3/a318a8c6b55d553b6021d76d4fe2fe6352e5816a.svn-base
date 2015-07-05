@@ -1,0 +1,67 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: dev
+ * Date: 03.03.15
+ * Time: 10:35
+ * @var $event \common\models\Event
+ * @var $this  \yii\web\View
+ */
+use common\models\User;
+use yii\helpers\Url;
+
+$this->registerJsFile('/js/event-view.js', ['depends' => \frontend\assets\YMapAsset::className()]);
+$this->registerCssFile('/css/event-view.css', ['depends' => \frontend\assets\AppAsset::className()]);
+$date = \common\helpers\Time::toDateTime($event->begin);
+$this->title=$event->name
+?>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="row">
+			<div class="col-md-6 col-lg-5">
+				<div class="panel panel-default">
+					<?php if ($date->getTimestamp() > time()): ?>
+						<div id="subscribe" data-remote="<?= Url::to(['/event/subscribe', 'id' => $event->id]); ?>">
+							<?php if (!$event->subscribe): ?>
+								<div class="btn btn-block btn-info">Подписаться</div>
+							<?php else: ?>
+								<div class="btn btn-block btn-success">Вы подписаны</div>
+							<?php endif ?>
+						</div>
+					<?php else:?>
+						<div class="panel-heading text-center">Событие завершено</div>
+					<?php endif; ?>
+					<?= $event->getImage(\common\models\Event::IMAGE_MAIN, ['class' => 'img-responsive','rel'=>'image_src']); ?>
+					<div id="map"
+						 data-title='<?= $event->geo_title ?>'
+						 data-description='<?= $event->geo_description ?>'
+						 data-coordinates='<?= json_encode([$event->geo_longitude, $event->geo_latitude]) ?>'></div>
+				</div>
+				<?= $this->render('/event/view-subscribers.php', ['event' => $event]); ?>
+			</div>
+			<div class="col-md-6 col-lg-7">
+				<div id="main-content">
+					<?= $this->render('/event/view-content.php', ['event' => $event]); ?>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="media">
+							<div class="media-left">
+								<a href="<?=Url::to(['user/index','id'=>$event->user_id]);?>">
+									<?= \common\helpers\Html::avatar($event->user, User::AVATAR_60,['class'=>'media-object img-circle']);?>
+								</a>
+							</div>
+							<div class="media-body">
+								<h5 class="media-heading"><?= $event->user->username; ?></h5>
+								Опубликовал событие <?=\common\helpers\Time::dateNormalize($event->created_at);?>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<?= $this->render('/event/view-comments.php', ['event' => $event]); ?>
+			</div>
+		</div>
+	</div>
+</div>

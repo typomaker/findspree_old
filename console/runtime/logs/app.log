@@ -1,0 +1,524 @@
+2015-03-22 15:47:15 [-][-][-][error][yii\base\ErrorException:32] exception 'yii\base\ErrorException' with message 'Module 'mbstring' already loaded' in Unknown:0
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-03-22 15:47:14 [-][-][-][info][application] $_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'AMDAPPSDKROOT' => 'c:\\Program Files (x86)\\AMD APP\\'
+    'APPDATA' => 'C:\\Users\\Альберт\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'ALBERT'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\Альберт'
+    'LOCALAPPDATA' => 'C:\\Users\\Альберт\\AppData\\Local'
+    'LOGONSERVER' => '\\\\MicrosoftAccount'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'c:\\Program Files (x86)\\Intel\\iCLS Client\\;c:\\Program Files\\Intel\\iCLS Client\\;c:\\Program Files (x86)\\AMD APP\\bin\\x86_64;c:\\Program Files (x86)\\AMD APP\\bin\\x86;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 58 Stepping 9, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3a09'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\48C4~1\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\48C4~1\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'ALBERT'
+    'USERDOMAIN_ROAMINGPROFILE' => 'ALBERT'
+    'USERNAME' => 'Альберт'
+    'USERPROFILE' => 'C:\\Users\\Альберт'
+    'windir' => 'C:\\Windows'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1427035634.4814
+    'REQUEST_TIME' => 1427035634
+    'argv' => [
+        0 => 'yii'
+    ]
+    'argc' => 1
+]
+2015-05-05 21:44:06 [][-][-][error][yii\base\InvalidConfigException] exception 'yii\base\InvalidConfigException' with message 'Unable to determine the request URI.' in C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\web\Request.php:788
+Stack trace:
+#0 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\web\Request.php(748): yii\web\Request->resolveRequestUri()
+#1 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\web\Request.php(683): yii\web\Request->getUrl()
+#2 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\web\Request.php(657): yii\web\Request->resolvePathInfo()
+#3 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\web\UrlManager.php(230): yii\web\Request->getPathInfo()
+#4 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\web\Request.php(180): yii\web\UrlManager->parseRequest(Object(common\component\Request))
+#5 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\console\Application.php(135): yii\web\Request->resolve()
+#6 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\base\Application.php(375): yii\console\Application->handleRequest(Object(common\component\Request))
+#7 C:\xampp\htdocs\findspree\trunk\yii(31): yii\base\Application->run()
+#8 {main}
+2015-05-05 21:44:06 [][-][-][info][application] $_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'AMDAPPSDKROOT' => 'c:\\Program Files (x86)\\AMD APP\\'
+    'APPDATA' => 'C:\\Users\\Альберт\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'ALBERT'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\Альберт'
+    'LOCALAPPDATA' => 'C:\\Users\\Альберт\\AppData\\Local'
+    'LOGONSERVER' => '\\\\MicrosoftAccount'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;c:\\Program Files (x86)\\AMD APP\\bin\\x86_64;c:\\Program Files (x86)\\AMD APP\\bin\\x86;c:\\Program Files (x86)\\Intel\\iCLS Client\\;c:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files (x86)\\AMD\\ATI.ACE\\Core-Static;C:\\Ruby22\\bin;C:\\xampp\\php;C:\\phalcon-tools'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW'
+    'PHP_COMMAND' => 'php.exe'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 58 Stepping 9, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3a09'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\48C4~1\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\48C4~1\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'ALBERT'
+    'USERDOMAIN_ROAMINGPROFILE' => 'ALBERT'
+    'USERNAME' => 'Альберт'
+    'USERPROFILE' => 'C:\\Users\\Альберт'
+    'windir' => 'C:\\Windows'
+    'YII_PATH' => 'C:\\xampp\\htdocs\\findspree\\trunk\\'
+    'PHP_SELF' => 'C:\\xampp\\htdocs\\findspree\\trunk\\yii'
+    'SCRIPT_NAME' => 'C:\\xampp\\htdocs\\findspree\\trunk\\yii'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\findspree\\trunk\\yii'
+    'PATH_TRANSLATED' => 'C:\\xampp\\htdocs\\findspree\\trunk\\yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1430855046.3903
+    'REQUEST_TIME' => 1430855046
+    'argv' => [
+        0 => 'C:\\xampp\\htdocs\\findspree\\trunk\\yii'
+    ]
+    'argc' => 1
+]
+2015-05-05 21:44:29 [][-][-][error][yii\base\InvalidConfigException] exception 'yii\base\InvalidConfigException' with message 'Unable to determine the request URI.' in C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\web\Request.php:788
+Stack trace:
+#0 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\web\Request.php(748): yii\web\Request->resolveRequestUri()
+#1 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\web\Request.php(683): yii\web\Request->getUrl()
+#2 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\web\Request.php(657): yii\web\Request->resolvePathInfo()
+#3 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\web\UrlManager.php(230): yii\web\Request->getPathInfo()
+#4 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\web\Request.php(180): yii\web\UrlManager->parseRequest(Object(common\component\Request))
+#5 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\console\Application.php(135): yii\web\Request->resolve()
+#6 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\base\Application.php(375): yii\console\Application->handleRequest(Object(common\component\Request))
+#7 C:\xampp\htdocs\findspree\trunk\yii(31): yii\base\Application->run()
+#8 {main}
+2015-05-05 21:44:29 [][-][-][info][application] $_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'AMDAPPSDKROOT' => 'c:\\Program Files (x86)\\AMD APP\\'
+    'APPDATA' => 'C:\\Users\\Альберт\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'ALBERT'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\Альберт'
+    'LOCALAPPDATA' => 'C:\\Users\\Альберт\\AppData\\Local'
+    'LOGONSERVER' => '\\\\MicrosoftAccount'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;c:\\Program Files (x86)\\AMD APP\\bin\\x86_64;c:\\Program Files (x86)\\AMD APP\\bin\\x86;c:\\Program Files (x86)\\Intel\\iCLS Client\\;c:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files (x86)\\AMD\\ATI.ACE\\Core-Static;C:\\Ruby22\\bin;C:\\xampp\\php;C:\\phalcon-tools'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW'
+    'PHP_COMMAND' => 'php.exe'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 58 Stepping 9, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3a09'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\48C4~1\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\48C4~1\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'ALBERT'
+    'USERDOMAIN_ROAMINGPROFILE' => 'ALBERT'
+    'USERNAME' => 'Альберт'
+    'USERPROFILE' => 'C:\\Users\\Альберт'
+    'windir' => 'C:\\Windows'
+    'YII_PATH' => 'C:\\xampp\\htdocs\\findspree\\trunk\\'
+    'PHP_SELF' => 'C:\\xampp\\htdocs\\findspree\\trunk\\yii'
+    'SCRIPT_NAME' => 'C:\\xampp\\htdocs\\findspree\\trunk\\yii'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\findspree\\trunk\\yii'
+    'PATH_TRANSLATED' => 'C:\\xampp\\htdocs\\findspree\\trunk\\yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1430855069.3253
+    'REQUEST_TIME' => 1430855069
+    'argv' => [
+        0 => 'C:\\xampp\\htdocs\\findspree\\trunk\\yii'
+        1 => 'help'
+    ]
+    'argc' => 2
+]
+2015-05-05 21:46:12 [][-][-][error][yii\base\InvalidConfigException] exception 'yii\base\InvalidConfigException' with message 'Unable to determine the request URI.' in C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\web\Request.php:788
+Stack trace:
+#0 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\web\Request.php(748): yii\web\Request->resolveRequestUri()
+#1 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\web\Request.php(683): yii\web\Request->getUrl()
+#2 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\web\Request.php(657): yii\web\Request->resolvePathInfo()
+#3 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\web\UrlManager.php(230): yii\web\Request->getPathInfo()
+#4 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\web\Request.php(180): yii\web\UrlManager->parseRequest(Object(common\component\Request))
+#5 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\console\Application.php(135): yii\web\Request->resolve()
+#6 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\base\Application.php(375): yii\console\Application->handleRequest(Object(common\component\Request))
+#7 C:\xampp\htdocs\findspree\trunk\yii(31): yii\base\Application->run()
+#8 {main}
+2015-05-05 21:46:12 [][-][-][info][application] $_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'AMDAPPSDKROOT' => 'c:\\Program Files (x86)\\AMD APP\\'
+    'APPDATA' => 'C:\\Users\\Альберт\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'ALBERT'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\Альберт'
+    'LOCALAPPDATA' => 'C:\\Users\\Альберт\\AppData\\Local'
+    'LOGONSERVER' => '\\\\MicrosoftAccount'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;c:\\Program Files (x86)\\AMD APP\\bin\\x86_64;c:\\Program Files (x86)\\AMD APP\\bin\\x86;c:\\Program Files (x86)\\Intel\\iCLS Client\\;c:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files (x86)\\AMD\\ATI.ACE\\Core-Static;C:\\Ruby22\\bin;C:\\xampp\\php;C:\\phalcon-tools'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW'
+    'PHP_COMMAND' => 'php.exe'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 58 Stepping 9, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3a09'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\48C4~1\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\48C4~1\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'ALBERT'
+    'USERDOMAIN_ROAMINGPROFILE' => 'ALBERT'
+    'USERNAME' => 'Альберт'
+    'USERPROFILE' => 'C:\\Users\\Альберт'
+    'windir' => 'C:\\Windows'
+    'YII_PATH' => 'C:\\xampp\\htdocs\\findspree\\trunk\\'
+    'PHP_SELF' => 'C:\\xampp\\htdocs\\findspree\\trunk\\yii'
+    'SCRIPT_NAME' => 'C:\\xampp\\htdocs\\findspree\\trunk\\yii'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\findspree\\trunk\\yii'
+    'PATH_TRANSLATED' => 'C:\\xampp\\htdocs\\findspree\\trunk\\yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1430855172.114
+    'REQUEST_TIME' => 1430855172
+    'argv' => [
+        0 => 'C:\\xampp\\htdocs\\findspree\\trunk\\yii'
+        1 => 'help'
+    ]
+    'argc' => 2
+]
+2015-05-05 21:46:14 [][-][-][error][yii\base\InvalidConfigException] exception 'yii\base\InvalidConfigException' with message 'Unable to determine the request URI.' in C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\web\Request.php:788
+Stack trace:
+#0 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\web\Request.php(748): yii\web\Request->resolveRequestUri()
+#1 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\web\Request.php(683): yii\web\Request->getUrl()
+#2 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\web\Request.php(657): yii\web\Request->resolvePathInfo()
+#3 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\web\UrlManager.php(230): yii\web\Request->getPathInfo()
+#4 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\web\Request.php(180): yii\web\UrlManager->parseRequest(Object(common\component\Request))
+#5 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\console\Application.php(135): yii\web\Request->resolve()
+#6 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\base\Application.php(375): yii\console\Application->handleRequest(Object(common\component\Request))
+#7 C:\xampp\htdocs\findspree\trunk\yii(31): yii\base\Application->run()
+#8 {main}
+2015-05-05 21:46:14 [][-][-][info][application] $_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'AMDAPPSDKROOT' => 'c:\\Program Files (x86)\\AMD APP\\'
+    'APPDATA' => 'C:\\Users\\Альберт\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'ALBERT'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\Альберт'
+    'LOCALAPPDATA' => 'C:\\Users\\Альберт\\AppData\\Local'
+    'LOGONSERVER' => '\\\\MicrosoftAccount'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;c:\\Program Files (x86)\\AMD APP\\bin\\x86_64;c:\\Program Files (x86)\\AMD APP\\bin\\x86;c:\\Program Files (x86)\\Intel\\iCLS Client\\;c:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files (x86)\\AMD\\ATI.ACE\\Core-Static;C:\\Ruby22\\bin;C:\\xampp\\php;C:\\phalcon-tools'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW'
+    'PHP_COMMAND' => 'php.exe'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 58 Stepping 9, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3a09'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\48C4~1\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\48C4~1\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'ALBERT'
+    'USERDOMAIN_ROAMINGPROFILE' => 'ALBERT'
+    'USERNAME' => 'Альберт'
+    'USERPROFILE' => 'C:\\Users\\Альберт'
+    'windir' => 'C:\\Windows'
+    'YII_PATH' => 'C:\\xampp\\htdocs\\findspree\\trunk\\'
+    'PHP_SELF' => 'C:\\xampp\\htdocs\\findspree\\trunk\\yii'
+    'SCRIPT_NAME' => 'C:\\xampp\\htdocs\\findspree\\trunk\\yii'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\findspree\\trunk\\yii'
+    'PATH_TRANSLATED' => 'C:\\xampp\\htdocs\\findspree\\trunk\\yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1430855174.6797
+    'REQUEST_TIME' => 1430855174
+    'argv' => [
+        0 => 'C:\\xampp\\htdocs\\findspree\\trunk\\yii'
+    ]
+    'argc' => 1
+]
+2015-05-05 21:48:11 [-][-][-][error][yii\base\ErrorException:8] exception 'yii\base\ErrorException' with message 'Trying to get property of non-object' in C:\xampp\htdocs\findspree\trunk\console\controllers\TagController.php:26
+Stack trace:
+#0 C:\xampp\htdocs\findspree\trunk\console\controllers\TagController.php(26): yii\base\ErrorHandler->handleError(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 26, Array)
+#1 [internal function]: console\controllers\TagController->actionNormalize()
+#2 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\console\Controller.php(91): yii\base\Controller->runAction('normalize', Array)
+#5 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\base\Module.php(455): yii\console\Controller->runAction('normalize', Array)
+#6 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\console\Application.php(161): yii\base\Module->runAction('tag/normalize', Array)
+#7 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\console\Application.php(137): yii\console\Application->runAction('tag/normalize', Array)
+#8 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\base\Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#9 C:\xampp\htdocs\findspree\trunk\yii(31): yii\base\Application->run()
+#10 {main}
+2015-05-05 21:48:10 [-][-][-][info][application] $_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'AMDAPPSDKROOT' => 'c:\\Program Files (x86)\\AMD APP\\'
+    'APPDATA' => 'C:\\Users\\Альберт\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'ALBERT'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\Альберт'
+    'LOCALAPPDATA' => 'C:\\Users\\Альберт\\AppData\\Local'
+    'LOGONSERVER' => '\\\\MicrosoftAccount'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;c:\\Program Files (x86)\\AMD APP\\bin\\x86_64;c:\\Program Files (x86)\\AMD APP\\bin\\x86;c:\\Program Files (x86)\\Intel\\iCLS Client\\;c:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files (x86)\\AMD\\ATI.ACE\\Core-Static;C:\\Ruby22\\bin;C:\\xampp\\php;C:\\phalcon-tools'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW'
+    'PHP_COMMAND' => 'php.exe'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 58 Stepping 9, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3a09'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\48C4~1\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\48C4~1\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'ALBERT'
+    'USERDOMAIN_ROAMINGPROFILE' => 'ALBERT'
+    'USERNAME' => 'Альберт'
+    'USERPROFILE' => 'C:\\Users\\Альберт'
+    'windir' => 'C:\\Windows'
+    'YII_PATH' => 'C:\\xampp\\htdocs\\findspree\\trunk\\'
+    'PHP_SELF' => 'C:\\xampp\\htdocs\\findspree\\trunk\\yii'
+    'SCRIPT_NAME' => 'C:\\xampp\\htdocs\\findspree\\trunk\\yii'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\findspree\\trunk\\yii'
+    'PATH_TRANSLATED' => 'C:\\xampp\\htdocs\\findspree\\trunk\\yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1430855290.9056
+    'REQUEST_TIME' => 1430855290
+    'argv' => [
+        0 => 'C:\\xampp\\htdocs\\findspree\\trunk\\yii'
+        1 => 'tag/normalize'
+    ]
+    'argc' => 2
+]
+2015-07-05 23:33:12 [-][-][-][error][yii\console\Exception] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "migration".' in C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\base\Module.php:461
+Stack trace:
+#0 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\console\Application.php(161): yii\base\Module->runAction('migration', Array)
+#1 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\console\Application.php(137): yii\console\Application->runAction('migration', Array)
+#2 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\base\Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#3 C:\xampp\htdocs\findspree\trunk\yii(31): yii\base\Application->run()
+#4 {main}
+
+Next exception 'yii\console\Exception' with message 'Unknown command "migration".' in C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\console\Application.php:163
+Stack trace:
+#0 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\console\Application.php(137): yii\console\Application->runAction('migration', Array)
+#1 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\base\Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#2 C:\xampp\htdocs\findspree\trunk\yii(31): yii\base\Application->run()
+#3 {main}
+2015-07-05 23:33:11 [-][-][-][info][application] $_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'AMDAPPSDKROOT' => 'c:\\Program Files (x86)\\AMD APP\\'
+    'APPDATA' => 'C:\\Users\\Альберт\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'ALBERT'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\Альберт'
+    'LOCALAPPDATA' => 'C:\\Users\\Альберт\\AppData\\Local'
+    'LOGONSERVER' => '\\\\MicrosoftAccount'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;c:\\Program Files (x86)\\AMD APP\\bin\\x86_64;c:\\Program Files (x86)\\AMD APP\\bin\\x86;c:\\Program Files (x86)\\Intel\\iCLS Client\\;c:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files (x86)\\AMD\\ATI.ACE\\Core-Static;C:\\HashiCorp\\Vagrant\\bin;C:\\Program Files\\nodejs\\;C:\\Ruby22\\bin;C:\\xampp\\php;C:\\phalcon-tools;C:\\Users\\Альберт\\AppData\\Roaming\\npm;C:\\Program Files (x86)\\Git\\cmd;C:\\Program Files (x86)\\Git\\bin;C:\\Program Files\\nodejs;'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 58 Stepping 9, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3a09'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\48C4~1\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\48C4~1\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'ALBERT'
+    'USERDOMAIN_ROAMINGPROFILE' => 'ALBERT'
+    'USERNAME' => 'Альберт'
+    'USERPROFILE' => 'C:\\Users\\Альберт'
+    'windir' => 'C:\\Windows'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1436128391.551
+    'REQUEST_TIME' => 1436128391
+    'argv' => [
+        0 => 'yii'
+        1 => 'migration'
+        2 => 'crate'
+    ]
+    'argc' => 3
+]
+2015-07-05 23:44:28 [-][-][-][error][yii\console\Exception] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request: migrate/crate' in C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\base\Controller.php:122
+Stack trace:
+#0 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\console\Controller.php(91): yii\base\Controller->runAction('crate', Array)
+#1 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\base\Module.php(455): yii\console\Controller->runAction('crate', Array)
+#2 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\console\Application.php(161): yii\base\Module->runAction('migrate/crate', Array)
+#3 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\console\Application.php(137): yii\console\Application->runAction('migrate/crate', Array)
+#4 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\base\Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#5 C:\xampp\htdocs\findspree\trunk\yii(31): yii\base\Application->run()
+#6 {main}
+
+Next exception 'yii\console\Exception' with message 'Unknown command "migrate/crate".' in C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\console\Application.php:163
+Stack trace:
+#0 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\console\Application.php(137): yii\console\Application->runAction('migrate/crate', Array)
+#1 C:\xampp\htdocs\findspree\trunk\vendor\yiisoft\yii2\base\Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#2 C:\xampp\htdocs\findspree\trunk\yii(31): yii\base\Application->run()
+#3 {main}
+2015-07-05 23:44:27 [-][-][-][info][application] $_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'AMDAPPSDKROOT' => 'c:\\Program Files (x86)\\AMD APP\\'
+    'APPDATA' => 'C:\\Users\\Альберт\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'ALBERT'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\Альберт'
+    'LOCALAPPDATA' => 'C:\\Users\\Альберт\\AppData\\Local'
+    'LOGONSERVER' => '\\\\MicrosoftAccount'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;c:\\Program Files (x86)\\AMD APP\\bin\\x86_64;c:\\Program Files (x86)\\AMD APP\\bin\\x86;c:\\Program Files (x86)\\Intel\\iCLS Client\\;c:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files (x86)\\AMD\\ATI.ACE\\Core-Static;C:\\HashiCorp\\Vagrant\\bin;C:\\Program Files\\nodejs\\;C:\\Ruby22\\bin;C:\\xampp\\php;C:\\phalcon-tools;C:\\Users\\Альберт\\AppData\\Roaming\\npm;C:\\Program Files (x86)\\Git\\cmd;C:\\Program Files (x86)\\Git\\bin;C:\\Program Files\\nodejs;'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 58 Stepping 9, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3a09'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\48C4~1\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\48C4~1\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'ALBERT'
+    'USERDOMAIN_ROAMINGPROFILE' => 'ALBERT'
+    'USERNAME' => 'Альберт'
+    'USERPROFILE' => 'C:\\Users\\Альберт'
+    'windir' => 'C:\\Windows'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1436129067.8675
+    'REQUEST_TIME' => 1436129067
+    'argv' => [
+        0 => 'yii'
+        1 => 'migrate/crate'
+        2 => 'create_table_event_calendar'
+    ]
+    'argc' => 3
+]

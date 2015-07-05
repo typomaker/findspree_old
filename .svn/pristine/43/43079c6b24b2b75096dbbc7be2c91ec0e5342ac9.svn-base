@@ -1,0 +1,54 @@
+<?php
+/* @var $this yii\web\View */
+use common\helpers\String;
+use common\models\User;
+use yii\helpers\Url;
+
+/* @var $userAuth User */
+/* @var $userView User */
+/* @var $eventSubscribe  \common\models\Event[] */
+/* @var $eventCreate  \common\models\Event[] */
+frontend\assets\User::register($this);
+?>
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<?=$this->renderFile('@app/views/user/main-info.php',['userView'=>$userView,'userAuth'=>$userAuth]);?>
+		<div id="event-list-subscribe" class="panel panel-default act"
+			 data-remote-self="<?= Url::to(['/user/event-list-subscribe', 'id' => $userView->id]); ?>">
+			<div class="panel-heading">
+				Подписан на события <span class="counter"></span>
+			</div>
+			<div class="panel-body">
+			</div>
+			<div class="panel-footer panel-next-page"><i class="md md-more-horiz"></i></div>
+			<div class="text-center panel-empty  panel-next-page" style="display: none"><i class="md md-more-horiz"></i>
+			</div>
+		</div>
+		<div id="event-list-create" class="panel panel-default act"
+			 data-remote-self="<?= Url::to(['/user/event-list-create', 'id' => $userView->id]); ?>">
+			<div class="panel-heading">
+				Создал события <span class="counter"></span>
+			</div>
+			<div class="panel-body">
+			</div>
+			<div class="panel-footer panel-next-page"><i class="md md-more-horiz"></i></div>
+			<div class="text-center panel-empty  panel-next-page" style="display: none"><i class="md md-more-horiz"></i>
+			</div>
+		</div>
+		<div id="wall-list" class="panel panel-default  act"
+			 data-remote-self="<?= Url::to(['/user/wall', 'id' => $userView->id]); ?>">
+			<div class="panel-heading">
+				Оповещения <span class="counter"></span>
+			</div>
+			<div class="panel-body"></div>
+			<div class="panel-footer panel-next-page"><i class="md md-more-horiz"></i></div>
+			<div class="text-center panel-empty  panel-next-page" style="display: none"><i class="md md-more-horiz"></i>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script id="tpl-event-item" type="text/html">
+	<?= $this->renderFile('@app/views/tpl/event-line.php'); ?>
+</script>

@@ -1,0 +1,81 @@
+<?php
+
+namespace common\models;
+
+use Yii;
+use yii\behaviors\TimestampBehavior;
+
+/**
+ * This is the model class for table "event_show".
+ * @property string  $id
+ * @property integer $event_id
+ * @property string  $ip
+ * @property string  $created
+ * @property string  $user_id
+ */
+class EventShow extends \yii\db\ActiveRecord
+{
+	public function behaviors()
+	{
+		return [
+			[
+				'class'              => TimestampBehavior::className(),
+				'createdAtAttribute' => 'created',
+				'updatedAtAttribute' => false,
+			],
+		];
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public static function tableName()
+	{
+		return 'event_show';
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function rules()
+	{
+		return [
+			[['event_id', 'uniqid'], 'required'],
+			[['event_id'], 'integer'],
+			[['uniqid'], 'string', 'max' => 40],
+			[['uniqid'], 'unique']
+		];
+	}
+
+	public static function showed(Event $event)
+	{
+		$q = self::find();
+		if (Yii::$app->request->getIsRobot()) {
+			return null;
+		}
+		$ip = ip2long(Yii::$app->request->getUserIP());
+		$userId = !Yii::$app->user->isGuest ? Yii::$app->user->id : null;
+		$q->where(['or', ['=', 'ip', $ip], ['=', 'user_id', Yii::$app->user->id]]);
+
+		if (!$q->exists()) {
+			$obj = new static();
+			$obj->ip = $ip;
+			$obj->user_id = $userId;
+			$obj->event_id = $event->id;
+			return $obj->insert(false);
+		}
+		return false;
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function attributeLabels()
+	{
+		return [
+			'id'       => 'ID',
+			'event_id' => 'Event ID',
+			'uniqid'   => 'Uniqid',
+		];
+	}
+}

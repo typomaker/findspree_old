@@ -1,0 +1,27 @@
+#avatar-change-container{
+
+}
+#avatar-change-loader{
+    cursor: pointer;
+    width: 100%;
+    height: 500px;
+    display: block;
+    padding-top: 180px;
+    text-align: center;
+    opacity: 0.5;
+    transition: ease-out,.5s,opacity;
+}
+#avatar-change-loader:hover{
+    opacity: 1;
+    text-shadow: none;
+}
+#avatar-change-img{
+    max-height: 480px!important;
+    margin: 0 auto;
+}
+#avatar-change-cropper{
+
+}
+.jcrop-holder{
+    margin: 0 auto;
+}

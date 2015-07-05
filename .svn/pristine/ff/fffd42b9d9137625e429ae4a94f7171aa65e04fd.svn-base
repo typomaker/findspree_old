@@ -1,0 +1,39 @@
+/**
+ * Created by albert on 11.03.15.
+ */
+var Helper;
+Helper = {
+    String: {
+        truncate: function (string,length,ending) {
+            if(!ending)ending='...';
+            if (!length)length = 40;
+            var regexp = new RegExp("^.{0," + length + "}[^\\s]{0,10}");
+            var newStr = regexp.exec(string)[0];
+            if(newStr.length<string.length)newStr+=ending;
+            return newStr;
+        }
+    }
+};
+$('.input-tag').tagsinput({
+    maxTags: 5,
+    maxChars: 30,
+    confirmKeys: [13, 44, 32,46,33,34,35,36,37,38,39,40,41,42,43,45,47,58,59,60,61,62,63,64,91,92,93,94,96,126,186,187,188,189,190,191,192,219,220,221,222],
+    trimValue: true
+});
+$(document).on('click','.event-control-subscribe',function(){
+    var $e = $(this);
+    var url = $(this).data('remote');
+    var oldClass = $e.attr('class');
+    if($e.hasClass('md-add-circle-outline')){
+        $e.removeClass('md-add-circle-outline').addClass('md-add-circle');
+    }else{
+        $e.removeClass('md-add-circle').addClass('md-add-circle-outline');
+    }
+    $.getJSON(url, function(data) {
+        //$e.trigger('fs.event.subscribed');
+        if(data.error){
+            $e.attr('class',oldClass);
+        }
+        //$.growl({ title: "Growl", message: data.message , location: "tc"});
+    });
+});

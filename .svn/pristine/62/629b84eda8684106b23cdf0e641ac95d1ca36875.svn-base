@@ -1,0 +1,211 @@
+<?php
+use common\helpers\Time;
+use himiklab\sitemap\behaviors\SitemapBehavior;
+use nodge\eauth\services\GoogleOAuth2Service;
+
+$params = array_merge(require(__DIR__ . '/../../common/config/params.php'), require(__DIR__ . '/../../common/config/params-local.php'), require(__DIR__ . '/params.php'), require(__DIR__ . '/params-local.php'));
+
+return [
+	'id'                  => 'app-frontend',
+	'basePath'            => dirname(__DIR__),
+	'language'            => 'ru_RU',
+	'bootstrap'           => ['log'],
+	'name'                => 'findspree',
+	'controllerNamespace' => 'frontend\controllers',
+	'modules'             => [
+		'sitemap' => [
+			'class'       => 'himiklab\sitemap\Sitemap',
+			'models'      => [
+				[
+					'class'     => \common\models\Event::className(),
+					'behaviors' => [
+						'sitemap' => [
+							'class'       => SitemapBehavior::className(),
+							'scope'       => function ($model) {
+								/** @var \yii\db\ActiveQuery $model */
+								$model->select(['id', 'created_at', 'updated']);
+								return $model->where(['>', 'begin', time() - Time::SEC_TO_MONTH]);
+							},
+							'dataClosure' => function ($model) {
+								/** @var \common\models\Event $model */
+								return [
+									'loc'        => \yii\helpers\Url::to(['/event/view', 'id' => $model->id], true),
+									'lastmod'    => $model->updated ?: $model->created_at,
+									'changefreq' => SitemapBehavior::CHANGEFREQ_DAILY,
+									'priority'   => $model->begin > time() ? 1 : 0.5
+								];
+							}
+						],
+					],
+				],
+			],
+			'enableGzip'  => true,
+			'cacheExpire' => Time::SEC_TO_HOUR,
+		],
+	],
+	'components'          => [
+		'eauth' => [
+			'class' => 'nodge\eauth\EAuth',
+			'popup' => true, // Use the popup window instead of redirecting.
+			'cache' => false, // Cache component name or false to disable cache. Defaults to 'cache' on production environments.
+			'cacheExpire' => 0, // Cache lifetime. Defaults to 0 - means unlimited.
+			'httpClient' => [
+				// uncomment this to use streams in safe_mode
+				//'useStreamsFallback' => true,
+			],
+			'services' => [ // You can change the providers and their classes.
+								 'vkontakte' => [
+									 // register your app here: https://vk.com/editapp?act=create&site=1
+									 'class' => 'common\social\OAuth2\Vk',
+									 'clientId' => '4903834',
+									 'clientSecret' => 'XcbdH2H4f4japrmeZL3L',
+									 'scope'=>['friends','email','nohttps']
+								 ],
+								 'facebook' => [
+//									 // register your app here: https://developers.facebook.com/apps/
+									 'class' => 'nodge\eauth\services\extended\FacebookOAuth2Service',
+									 'clientId' => '1004263189586829',
+									 'clientSecret' => '63b52a9faf46163f615042ae54b28bdc',
+//									 'scope'=>['hometown','email','location','photos','birthday']
+								 ],
+//								 'google' => array(
+//									 'class' => 'nodge\eauth\services\GoogleOpenIDService',
+//									 //'realm' => '*.example.org', // your domain, can be with wildcard to authenticate on subdomains.
+//								 ),
+//								 'yandex' => array(
+//									 'class' => 'nodge\eauth\services\YandexOpenIDService',
+//									 //'realm' => '*.example.org', // your domain, can be with wildcard to authenticate on subdomains.
+//								 ),
+								 'google_oauth' => [
+									 // register your app here: https://code.google.com/apis/console/
+									 'class' => 'nodge\eauth\services\GoogleOAuth2Service',
+									 'clientId' => '187710509983-esid261slcbl628pb5uot7gegkbma4ob.apps.googleusercontent.com',
+									 'clientSecret' => 'Oe4JuQ3tGM9D6Qfs0gK3h8uk',
+									 'title' => 'Google (OAuth)',
+									 'scope'=>['USERINFO_PROFILE','EMAIL']
+								 ],
+//								 'yandex_oauth' => array(
+//									 // register your app here: https://oauth.yandex.ru/client/my
+//									 'class' => 'nodge\eauth\services\YandexOAuth2Service',
+//									 'clientId' => '...',
+//									 'clientSecret' => '...',
+//									 'title' => 'Yandex (OAuth)',
+//								 ),
+//								 'facebook' => array(
+//									 // register your app here: https://developers.facebook.com/apps/
+//									 'class' => 'nodge\eauth\services\FacebookOAuth2Service',
+//									 'clientId' => '...',
+//									 'clientSecret' => '...',
+//								 ),
+//								 'yahoo' => array(
+//									 'class' => 'nodge\eauth\services\YahooOpenIDService',
+//									 //'realm' => '*.example.org', // your domain, can be with wildcard to authenticate on subdomains.
+//								 ),
+//								 'linkedin' => array(
+//									 // register your app here: https://www.linkedin.com/secure/developer
+//									 'class' => 'nodge\eauth\services\LinkedinOAuth1Service',
+//									 'key' => '...',
+//									 'secret' => '...',
+//									 'title' => 'LinkedIn (OAuth1)',
+//								 ),
+//								 'linkedin_oauth2' => array(
+//									 // register your app here: https://www.linkedin.com/secure/developer
+//									 'class' => 'nodge\eauth\services\LinkedinOAuth2Service',
+//									 'clientId' => '...',
+//									 'clientSecret' => '...',
+//									 'title' => 'LinkedIn (OAuth2)',
+//								 ),
+//								 'github' => array(
+//									 // register your app here: https://github.com/settings/applications
+//									 'class' => 'nodge\eauth\services\GitHubOAuth2Service',
+//									 'clientId' => '...',
+//									 'clientSecret' => '...',
+//								 ),
+//								 'live' => array(
+//									 // register your app here: https://account.live.com/developers/applications/index
+//									 'class' => 'nodge\eauth\services\LiveOAuth2Service',
+//									 'clientId' => '...',
+//									 'clientSecret' => '...',
+//								 ),
+//								 'steam' => array(
+//									 'class' => 'nodge\eauth\services\SteamOpenIDService',
+//									 //'realm' => '*.example.org', // your domain, can be with wildcard to authenticate on subdomains.
+//								 ),
+
+//								 'mailru' => array(
+//									 // register your app here: http://api.mail.ru/sites/my/add
+//									 'class' => 'nodge\eauth\services\MailruOAuth2Service',
+//									 'clientId' => '...',
+//									 'clientSecret' => '...',
+//								 ),
+//								 'odnoklassniki' => array(
+//									 // register your app here: http://dev.odnoklassniki.ru/wiki/pages/viewpage.action?pageId=13992188
+//									 // ... or here: http://www.odnoklassniki.ru/dk?st.cmd=appsInfoMyDevList&st._aid=Apps_Info_MyDev
+//									 'class' => 'nodge\eauth\services\OdnoklassnikiOAuth2Service',
+//									 'clientId' => '...',
+//									 'clientSecret' => '...',
+//									 'clientPublic' => '...',
+//									 'title' => 'Odnoklas.',
+//								 ),
+			],
+		],
+
+		'i18n' => [
+			'translations' => [
+				'eauth' => [
+					'class' => 'yii\i18n\PhpMessageSource',
+					'basePath' => '@eauth/messages',
+				],
+			],
+		],
+		'user'         => [
+			'identityClass'   => 'common\models\User',
+			'enableAutoLogin' => true,
+		],
+		'log'          => [
+			'traceLevel' => YII_DEBUG ? 3 : 0,
+			'targets'    => [
+				[
+					'class'  => 'yii\log\FileTarget',
+					'levels' => ['error', 'warning'],
+				],
+			],
+		],
+		'urlManager'   => [
+			'enablePrettyUrl' => true,
+			'showScriptName'  => false,
+			'rules'           => [
+				'events'        => '/site/index',
+				'map'           => 'event/map',
+				'user<id:\d+>'  => 'user/index',
+				'my'            => 'user/index',
+				'event<id:\d+>' => 'event/view',
+				['pattern' => 'sitemap', 'route' => 'sitemap/default/index', 'suffix' => '.xml'],
+			],
+		],
+		'errorHandler' => [
+			'errorAction' => 'site/error',
+		],
+		'cache'        => [
+			'class' => 'yii\caching\FileCache',
+		],
+		'request' => [
+			'class' => \common\component\Request::className(),
+		],
+		'mailer'       => [
+			'class'            => 'yii\swiftmailer\Mailer',
+			'viewPath'         => '@app/mail',
+			'htmlLayout'       => 'layouts/html',
+			'useFileTransport' => false,
+			'transport'        => [
+				'class'      => 'Swift_SmtpTransport',
+				'host'       => 'smtp.yandex.ru',
+				'username'   => 'noreply@findspree.ru',
+				'password'   => 'eu6na012',
+				'port'       => '465',
+				'encryption' => 'ssl',
+			],
+		],
+	],
+	'params'              => $params,
+];

@@ -1,0 +1,60 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Альберт
+ * Date: 07.05.2015
+ * Time: 4:09
+ */
+
+namespace common\social\OAuth2;
+
+
+use common\models\User;
+use nodge\eauth\services\extended\VKontakteOAuth2Service;
+
+class Vk extends VKontakteOAuth2Service
+{
+	const SCOPE_EMAIL = 'email';
+	const SCOPE_NOHTTPS = 'nohttps';
+
+	protected function fetchAttributes()
+	{
+		$tokenData = $this->getAccessTokenData();
+		print '<pre> tokendt: '.print_r($tokenData,1).'</pre>';
+		die;
+		$info = $this->makeSignedRequest('users.get.json', [
+			'query' => [
+				'uids'   => $tokenData['params']['user_id'],
+				//'fields' => '', // uid, first_name and last_name is always available
+				'fields' => 'nickname, sex, bdate, city, country, timezone, photo, photo_medium, photo_big, photo_rec',
+			],
+		]);
+
+		$info = array_merge([
+								'uid'            => '',
+								'first_name'     => '',
+								'last_name'      => '',
+								'nickname'       => '',
+								'sex'            => '',
+								'bdate'          => '',
+								'city'           => '',
+								'country'        => '',
+								'photo_max' => 		'',
+							], $info['response'][0]);
+
+		$this->attributes = $info;
+		$this->attributes['id'] = $info['uid'];
+		$this->attributes['firstName'] = $info['first_name'];
+		$this->attributes['lastName'] = $info['last_name'];
+		$this->attributes['username'] = $info['nickname']?:'id' . $info['uid'];
+//		$this->attributes['url'] = 'http://vk.com/id' . $info['uid'];
+		$this->attributes['gender'] = $info['sex'] == 1 ? User::GENDER_FEMALE : User::GENDER_MALE;
+		$this->attributes['avatar'] = $info['photo_max'];
+
+//		if (!empty($info['timezone'])) {
+//			$this->attributes['timezone'] = timezone_name_from_abbr('', $info['timezone'] * 3600, date('I'));
+//		}
+
+		return true;
+	}
+}

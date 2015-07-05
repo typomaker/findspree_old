@@ -1,0 +1,28 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: albert
+ * Date: 09.03.15
+ * Time: 22:56
+ */
+
+namespace common\models\Wall;
+
+
+use common\models\Wall;
+
+class NewEvent extends DataContainer{
+    public $eventId;
+    public $userId;
+
+    public function rules()
+    {
+        return [
+            [['eventId','userId'],'required']
+        ];
+    }
+
+
+
+
+}

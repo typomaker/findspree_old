@@ -1,0 +1,118 @@
+/**
+ * Created by dev on 20.02.15.
+ */
+(function () {
+    //$.growl({ title: "Growl", message: "The kitten is awake!" , location: "tc"});
+    //$.growl.error({ message: "The kitten is attacking!" });
+    //$.growl.notice({ message: "The kitten is cute!" });
+    //$.growl.warning({ message: "The kitten is ugly!" });
+
+    var page = 1;
+    var container = document.querySelector('#events-container');
+    var masonry;
+    //masonry = new Masonry(container, {
+    //    itemSelector: '.item'
+    //});
+    var $tpl = $('#tpl-event-item');
+    var url = $tpl.data('remote');
+    var $list = $('#events-container');
+    var masonryConfig = {
+        transitionDuration: "0.3s",
+        itemSelector: '.item',
+        columnWidth: '.col-md-4'
+    };
+    $list.masonry(masonryConfig);
+    var template = _.template($tpl.text());
+    var $buttonNextPage = $('#next-page');
+    var filters = {
+        page: 1
+    };
+    var more = true;
+    var loading = false;
+
+    var buttonNextShow = function () {
+        $buttonNextPage.prev().show();
+        $buttonNextPage.show();
+    };
+    var buttonNextHide = function () {
+        $buttonNextPage.prev().hide();
+        $buttonNextPage.hide();
+    };
+    buttonNextHide();
+    var nextPage = function () {
+        if (loading)return;
+        filters.page += 1;
+        currentPage();
+    };
+    var currentPage = function () {
+        loading = true;
+        $.get(url, filters, function (data) {
+            loading = false;
+            var meta = data._meta;
+            var links = data._links;
+
+            if (meta.pageCount == meta.currentPage) {
+                buttonNextHide();
+                more = false;
+            } else if (meta.pageCount > 1) {
+                buttonNextShow();
+                more = true;
+            }
+            var html = '';
+            if (filters.page == 1) {
+                $list.html('')
+            }
+            $.each(data.items, function (k, v) {
+                v.description = Helper.string.truncate(v.description, 200)
+                html = $(template({dt:v}))[0];
+                $list.masonry().append(html).masonry('appended',html);
+            });
+
+            setTimeout(function(){
+                $list.masonry();
+            },400);
+        });
+    }
+
+    setInterval(function () {
+        if (masonry)
+            masonry.layout();
+    }, 3000);
+    currentPage();
+    $(document).ready(function () {
+        $(window).scroll(function () {
+            if (more && $(window).scrollTop() + $(window).height() > $(document).height() * 0.8) {
+                nextPage()
+            }
+        });
+    });
+    $buttonNextPage.click(function () {
+        filters.page += 1;
+        nextPage();
+        return false;
+    });
+    var timeout;
+    var search = function (event) {
+        var val = $(this).val();
+        if (val.length == 0 && filters) {
+            delete filters.search
+        } else {
+            filters.search = val;
+        }
+        filters.page = 1;
+        clearTimeout(timeout);
+        timeout = setTimeout(currentPage, 500);
+    };
+    $('#event-search .input-tag').on('itemAdded', search).on('itemRemoved', search);
+    $('.event-calendar li:not(.disabled)').on('click', function () {
+        var $e = $(this);
+        $list.html('');
+        filters.page = 1;
+        filters.begin = $e.data('date');
+        currentPage();
+        $e.parent().find('.active').removeClass('active');
+        $e.addClass('active')
+        return false;
+    });
+
+})();

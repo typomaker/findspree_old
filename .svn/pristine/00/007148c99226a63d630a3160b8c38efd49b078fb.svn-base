@@ -1,0 +1,37 @@
+	<div class="event-item">
+		<div class="event-img">
+			<a href="<%= link.view %>"><img src="<%=img.main%>" class="img-responsive"/></a>
+		</div>
+		<div class="event-body">
+			<a href="<%= user.link.home %>">
+				<% if(user.avatar.sm){ %>
+				<img class="media-object img-circle owner-img" width="50" title="<%=user.username%>"
+					 src="<%= user.avatar.sm %>" alt="<%=user.username%>">
+				<% } else {
+
+				} %>
+			</a>
+
+			<div class="event-title"><%=name%></div>
+			<div class="event-description"><%=description%></div>
+			<div title="Время начала события" class="event-date"><i class="md md-access-time"></i> <small><%= date %></small></div>
+			<div title="Адрес: <%= geo_description%>"><i class="md  md-place"></i> <small><%= geo_title%></small></div>
+			<% if(tags.length>0){ %>
+			<hr class="separator"/>
+				<% for( var key in tags ){
+				var tag = tags[key]; %>
+				<div class="label label-primary"><%=tag%></div>
+				<% } %>
+			<% } %>
+
+			<div class="event-control">
+                <% if(finished) { %>
+                    <i class="md md-check" title="Мероприятие завершено"></i>
+                <% } else { %>
+                    <i class="md <% if(subscribe){%> md-add-circle<% }else{ %>md-add-circle-outline <%} %> event-control-subscribe "
+				   data-remote="<%=link.subscribe%>" title="<% if(subscribe){%> Отменить подписку<% }else{ %>Подписаться<%} %>"></i>
+                <% } %>
+				<a href="<%=link.view%>" title="Подробнее"><i class="md md-menu event-control-view"></i></a>
+			</div>
+		</div>
+	</div>

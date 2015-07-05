@@ -1,0 +1,201 @@
+/**
+ * Created by dev on 20.02.15.
+ */
+/*
+ *  var state = function () {
+ var url = URI(window.location.href);
+ var params = url.search(true) || {};
+
+ var begin = $('.calendar-item.active').data('date');
+ if (begin) {
+ params.begin = begin;
+ }
+ var tags = $inputTag.val().length ? $inputTag.val().split(',') : [];
+ if (tags.length > 0) {
+ params.tags = tags;
+ }
+ console.log(params);
+ if ((params.tags && params.tags.length > 0) || params.begin) {
+ history.pushState({}, '', '?' + $.param(params));
+ } else {
+ alert(1);
+ history.pushState({}, '', window.location.pathname);
+ }
+ };
+ * */
+
+(function () {
+    function AFilter() {
+        var _tags = [];
+        var _page = 1;
+        var _begin = 0;
+        var params = this.getUrl().query(true);
+        if (params['tags[]']) _tags = typeof  params['tags[]'] == 'string' ? [params['tags[]']] : params['tags[]'];
+        if (params.begin) _begin = params.begin;
+        this.getTags = function () {
+            return _tags;
+        };
+        this.setTags = function (tags) {
+            if (typeof  tags == 'string') {
+                tags = tags.split(',');
+            }
+            _tags = tags;
+            this.apply();
+            return this;
+        };
+        this.cleanTag = function () {
+            _tags = [];
+            this.apply();
+            return this;
+        };
+        this.nextPage = function () {
+            _page++;
+            this.apply();
+            return this;
+        };
+        this.firstPage = function () {
+            _page = 1;
+            this.apply();
+            return this;
+        };
+        this.setPage = function (page) {
+            _page = page;
+            this.apply();
+            return this;
+        };
+        this.getPage = function () {
+            return _page;
+        };
+        this.setBegin = function (begin) {
+            _begin = begin;
+            this.apply();
+            return this;
+        };
+        this.getBegin = function () {
+            this.apply();
+            return _begin;
+        };
+        this.getAttributes = function () {
+            return {
+                page: _page,
+                begin: _begin,
+                tags: _tags
+            }
+        };
+        this.apply = function () {
+            var attr = this.getAttributes();
+            var prepare = {};
+            if (attr.page > 1)prepare.page = attr.page;
+            if (attr.tags.length >= 1)prepare["tags[]"] = attr.tags;
+            if (attr.begin)prepare.begin = attr.begin;
+            history.pushState({}, '', this.getUrl().search(prepare));
+        }
+    };
+    AFilter.prototype.getUrl = function () {
+        return URI(window.location.href);
+    };
+    var container = document.querySelector('#events-container');
+    var masonry;
+    var filter = new AFilter();
+    var $tpl = $('#tpl-event-item');
+    var url = $tpl.data('remote');
+    var $list = $('#events-container');
+    var masonryConfig = {
+        transitionDuration: "0.3s",
+        itemSelector: '.item',
+        columnWidth: '.col-md-4'
+    };
+    $list.masonry(masonryConfig);
+    var template = _.template($tpl.text());
+    var $buttonNextPage = $('#next-page');
+
+    var more = true;
+    var loading = false;
+
+    var buttonNextShow = function () {
+        $buttonNextPage.prev().show();
+        $buttonNextPage.show();
+    };
+    var buttonNextHide = function () {
+        $buttonNextPage.prev().hide();
+        $buttonNextPage.hide();
+    };
+    buttonNextHide();
+    var nextPage = function () {
+        if (loading)return;
+        filter.nextPage();
+        currentPage();
+    };
+
+    var currentPage = function () {
+        loading = true;
+        $.get(url, filter.getAttributes(), function (data) {
+            loading = false;
+            var meta = data._meta;
+            var links = data._links;
+
+            if (meta.pageCount == meta.currentPage) {
+                buttonNextHide();
+                more = false;
+            } else if (meta.pageCount > 1) {
+                buttonNextShow();
+                more = true;
+            }
+            var html = '';
+            if (filter.getPage() == 1) {
+                $list.html('')
+            }
+            $.each(data.items, function (k, v) {
+                html = $(template({dt: v}))[0];
+                $list.masonry().append(html).masonry('appended', html);
+            });
+
+            setTimeout(function () {
+                $list.masonry();
+            }, 400);
+        });
+    }
+
+    setInterval(function () {
+        if (masonry)
+            masonry.layout();
+    }, 3000);
+    currentPage();
+    $(document).ready(function () {
+        $(window).scroll(function () {
+            if (more && $(window).scrollTop() + $(window).height() > $(document).height() * 0.8) {
+                nextPage()
+            }
+        });
+    });
+    var timeout;
+    var search = function (event) {
+        var val = $(this).val();
+        if (val.length == 0) {
+            filter.cleanTag();
+        } else {
+            filter.setTags(val);
+        }
+        filter.firstPage();
+        clearTimeout(timeout);
+        timeout = setTimeout(currentPage, 500);
+    };
+    var $tagI = $('#event-search .input-tag');
+    if (filter.getTags().length) {
+        console.log(filter.getTags());
+        _.each(filter.getTags(), function (v, k) {
+            $tagI.tagsinput('add', v);
+        })
+    }
+    $tagI.on('itemAdded', search).on('itemRemoved', search);
+    $('.event-calendar li:not(.disabled)').on('click', function () {
+        var $e = $(this);
+        $list.html('');
+        filter.firstPage();
+        filter.setBegin($e.data('date'));
+        $e.parent().find('.active').removeClass('active');
+        $e.addClass('active');
+        currentPage();
+        return false;
+    });
+})();

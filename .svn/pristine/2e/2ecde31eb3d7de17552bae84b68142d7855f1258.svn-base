@@ -1,0 +1,33 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: albert
+ * Date: 22.02.15
+ * Time: 3:09
+ */
+
+namespace frontend\assets;
+
+
+use yii\web\AssetBundle;
+
+class EventCreateAsset extends AssetBundle{
+    public $basePath = '@webroot';
+    public $baseUrl = '@web';
+    public $css = [
+        'css/event-new.css',
+        'libs/taginput/bootstrap-tagsinput.css',
+        'libs/datetime-picker/css/bootstrap-datetimepicker.min.css',
+
+    ];
+    public $js = [
+
+        'libs/taginput/bootstrap-tagsinput.min.js',
+        'libs/datetime-picker/js/bootstrap-datetimepicker.min.js',
+        'libs/datetime-picker/js/locales/bootstrap-datetimepicker.ru.js',
+        'js/event-new.js',
+    ];
+    public $depends = [
+        'frontend\assets\YMapAsset',
+    ];
+}

@@ -1,0 +1,108 @@
+<?php
+/* @var $this yii\web\View */
+use common\helpers\String;
+use common\models\User;
+use yii\helpers\Url;
+
+/* @var $userAuth User */
+/* @var $userView User */
+/* @var $eventSubscribe  \common\models\Event[] */
+/* @var $eventCreate  \common\models\Event[] */
+frontend\assets\User::register($this);
+?>
+<div class="row">
+    <div class="col-md-3 user-left">
+        <?= $userView->getAvatar(User::AVATAR_240, ['class' => 'img-responsive user-avatar center-block img-circle ']); ?>
+        <div class="list-group">
+            <a id="menu-wall" href="#" class="list-group-item menu-item" data-action="wall">
+                Действия <span class="badge badge-default">123</span>
+            </a>
+            <a id="menu-event-subscribe" href="#" class="list-group-item menu-item" data-action="eventSubscribe">
+                Избранные события <span class="badge badge-default">123</span>
+            </a>
+            <a id="menu-event-create" href="#" class="list-group-item menu-item" data-action="eventCreated">
+                Созданные события <span class="badge badge-default">123</span>
+            </a>
+            <a href="#" class="list-group-item menu-item" data-action="userSubscribe">
+                Подписан на <span class="badge badge-default">2</span>
+            </a>
+            <a href="#" class="list-group-item menu-item" data-action="userSubscribers">
+                Подписчики <span class="badge badge-default">123</span>
+            </a>
+        </div>
+    </div>
+    <div id="content" class="col-md-6">
+        <div id="act-wall" class="panel panel-default act"
+             data-remote="<?= Url::to(['/user/wall', 'id' => $userView->id]); ?>">
+            <div class="panel-heading">
+                Действия <span class="counter"></span>
+            </div>
+            <div class="panel-body">
+            </div>
+            <div class="panel-footer panel-next-page"><i class="md md-more-horiz"></i></div>
+            <div class="text-center panel-empty  panel-next-page" style="display: none"><i class="md md-more-horiz"></i>
+            </div>
+        </div>
+        <div id="act-event-subscribe" class="panel panel-default act"
+             data-remote="<?= Url::to(['/user/event-subscribe', 'id' => $userView->id]); ?>">
+            <div class="panel-heading">
+                Подписан на события <span class="counter"></span>
+            </div>
+            <div class="panel-body">
+            </div>
+            <div class="panel-footer panel-next-page"><i class="md md-more-horiz"></i></div>
+            <div class="text-center panel-empty  panel-next-page" style="display: none"><i class="md md-more-horiz"></i>
+            </div>
+        </div>
+        <div id="act-event-create" class="panel panel-default act"
+             data-remote="<?= Url::to(['/user/event-create', 'id' => $userView->id]); ?>">
+            <div class="panel-heading">
+                Созданные события <span class="counter"></span>
+            </div>
+            <div class="panel-body">
+            </div>
+            <div class="panel-footer panel-next-page"><i class="md md-more-horiz"></i></div>
+            <div class="text-center panel-empty  panel-next-page" style="display: none"><i class="md md-more-horiz"></i>
+            </div>
+        </div>
+        <div id="act-userSubscribe" class="panel panel-default act"
+             data-remote="<?= Url::to(['/user/event-list-subscribe', 'id' => $userView->id]); ?>">
+            <div class="panel-heading">
+                Подписанный на пользователей <span class="counter"></span>
+            </div>
+            <div class="panel-body-fake">
+            </div>
+            <div class="panel-footer panel-next-page"><i class="md md-more-horiz"></i></div>
+            <div class="text-center panel-empty  panel-next-page" style="display: none"><i class="md md-more-horiz"></i>
+            </div>
+        </div>
+        <div id="act-userSubscribers" class="panel panel-default act"
+             data-remote="<?= Url::to(['/user/event-list-subscribe', 'id' => $userView->id]); ?>">
+            <div class="panel-heading">
+                Подписчики <span class="counter"></span>
+            </div>
+            <div class="panel-body-fake">
+            </div>
+            <div class="panel-footer panel-next-page"><i class="md md-more-horiz"></i></div>
+            <div class="text-center panel-empty  panel-next-page" style="display: none"><i class="md md-more-horiz"></i>
+            </div>
+        </div>
+    </div>
+    <div id="right" class="col-md-3">
+        dfasdffsd
+    </div>
+</div>
+
+
+<script id="tpl-event-wide" type="text/html">
+    <?= $this->renderFile('@app/views/tpl/event-line.php'); ?>
+</script>
+<script id="tpl-wall-new-event" type="text/html">
+    <?= $this->renderFile('@app/views/tpl/wall-new-event.php'); ?>
+</script>
+<script id="tpl-wall-subscribe-event" type="text/html">
+    <?= $this->renderFile('@app/views/tpl/wall-subscribe-event.php'); ?>
+</script>
+<script id="tpl-wall-user-event" type="text/html">
+<!--    --><?//= $this->renderFile('@app/views/tpl/wall-user-event.php'); ?>
+</script>

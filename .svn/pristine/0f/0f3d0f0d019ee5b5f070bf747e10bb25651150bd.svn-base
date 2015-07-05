@@ -1,0 +1,65 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: albert
+ * Date: 22.02.15
+ * Time: 3:57
+ * @var  $this          \yii\web\View
+ * @var  $model         \frontend\models\EventForm
+ * @var  $form          ActiveForm
+ * @var  $eventTypeList \common\models\EventType[]
+ * @var  $user          \common\models\User
+ */
+use yii\bootstrap\ActiveForm;
+
+\frontend\assets\EventCreateAsset::register($this);
+?>
+<?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
+<?= $form->field($model, 'geoCoordinates', ['template' => '{input}'])->hiddenInput()->label(false); ?>
+<?= $form->field($model, 'geoDescription', ['template' => '{input}'])->hiddenInput()->label(false); ?>
+	<div id="form-event-new" class="row">
+		<div class="item col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<?= $form->field($model, 'img')->label('Выберите изображение',['class'=>'btn btn-info btn-block'])->fileInput([
+						'class'  => 'hidden',
+						'accept' => 'image/*',
+					]); ?>
+					<div id="avatar-preview" class="avatar-preview center-block"
+						 style="display: none;height: 200px; background-size:cover;background-position: center;">
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<?= $form->field($model, 'geoTitle')->textInput(['placeholder' => 'Город, Улица, Дом...']); ?>
+					<div id="map"></div>
+				</div>
+			</div>
+		</div>
+		<div class="item col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<?= $form->field($model, 'name')->textInput(['placeholder' => '...']); ?>
+					<?= $form->field($model, 'description')->textarea(['rows'        => 15,
+																	   'contenteditable'=>'true',
+																	   'placeholder' => '...'
+					]); ?>
+				</div>
+			</div>
+		</div>
+		<div class="item col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<?= $form->field($model, 'type')->dropDownList(\yii\helpers\ArrayHelper::getColumn($eventTypeList, 'name')); ?>
+					<?= $form->field($model, 'site')->textInput(['placeholder' => 'http://...']); ?>
+					<?= $form->field($model, 'price')->textInput(['placeholder' => '0 руб.']); ?>
+					<?= $form->field($model, 'begin')->textInput(['placeholder' => '16.11.1992 6:30']); ?>
+					<?= $form->field($model, 'end')->textInput(['placeholder' => '16.11.'.date('Y').' 6:30']); ?>
+					<?= $form->field($model, 'tag', ['inputOptions' => ['class' => 'input-tag']]); ?>
+					<?= \yii\helpers\Html::submitButton('Сохранить', ['class' => 'btn btn-primary']); ?>
+				</div>
+			</div>
+		</div>
+	</div>
+<?php ActiveForm::end() ?>

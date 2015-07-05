@@ -1,0 +1,68 @@
+<?php
+
+namespace common\models;
+
+use Yii;
+
+/**
+ * This is the model class for table "wall_post".
+ * @property string  $id
+ * @property string  $wall_id
+ * @property integer $target_type
+ * @property integer $target_id
+ */
+class WallPost extends \yii\db\ActiveRecord
+{
+	const TARGET_TYPE_USER = 1;
+	const TARGET_TYPE_EVENT = 2;
+
+	/**
+	 * @inheritdoc
+	 */
+	public static function tableName()
+	{
+		return 'wall_post';
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function rules()
+	{
+		return [
+			[['wall_id', 'target_type', 'target_id'], 'required'],
+			[['wall_id', 'target_type', 'target_id'], 'integer']
+		];
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function attributeLabels()
+	{
+		return [
+			'id'          => 'ID',
+			'wall_id'     => 'Wall ID',
+			'target_type' => 'Target Type',
+			'target_id'   => 'Target ID',
+		];
+	}
+
+	public static function toUser($wall, array $userIdList)
+	{
+		if(is_array($wall)){
+			$wall = new Wall($wall);
+			$wall->insert();
+		}
+		if(!$wall->id){
+			throw new \ErrorException("Не удалось сохранить запись стены");
+		}
+		$rows = [];
+		foreach ($userIdList as $userId) {
+			$rows[] = [self::TARGET_TYPE_USER, $userId, $wall->id];
+		}
+		return Yii::$app->db->createCommand()
+			->batchInsert(self::tableName(), ['target_type', 'target_id', 'wall_id'], $rows)
+			->execute();
+	}
+}

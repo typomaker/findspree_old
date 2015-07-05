@@ -1,0 +1,36 @@
+	<div class="event-item">
+		<div class="event-img">
+			<a href="<%=dt.link.view %>"><img src="<%=dt.img.main%>" class="img-responsive"/></a>
+		</div>
+		<div class="event-body">
+			<a href="<%=dt.user.link.home %>">
+				<%= Helper.html.avatar(dt.user,50,{
+					"class":"media-object img-circle owner-img",
+					"title":dt.user.username,
+					"alt":dt.user.username
+				})%>
+			</a>
+
+			<div class="event-title"><%=dt.name%></div>
+			<div class="event-description"><%=dt.description%></div>
+			<div title="Время начала события" class="event-date"><i class="md md-access-time"></i> <small><%= dt.date %></small></div>
+			<div title="Адрес: <%= dt.geo_description%>"><i class="md  md-place"></i> <small><%= dt.geo_title%></small></div>
+			<% if(dt.tags.length>0){ %>
+			<hr class="separator"/>
+				<% for( var key in dt.tags ){
+				var tag = dt.tags[key]; %>
+				<div class="label label-primary"><%=tag%></div>
+				<% } %>
+			<% } %>
+
+			<div class="event-control">
+                <% if(dt.finished) { %>
+                    <i class="md md-check" title="Мероприятие завершено"></i>
+                <% } else { %>
+                    <i class="md <% if(dt.subscribe){%> md-add-circle<% }else{ %>md-add-circle-outline <%} %> event-control-subscribe "
+				   data-remote="<%=dt.link.subscribe%>" title="<% if(dt.subscribe){%> Отменить подписку<% }else{ %>Подписаться<%} %>"></i>
+                <% } %>
+				<a href="<%=dt.link.view%>" title="Подробнее"><i class="md md-menu event-control-view"></i></a>
+			</div>
+		</div>
+	</div>

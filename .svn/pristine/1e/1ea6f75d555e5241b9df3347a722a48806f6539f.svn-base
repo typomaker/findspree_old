@@ -1,0 +1,44 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: albert
+ * Date: 10.03.15
+ * Time: 1:42
+ * @var $model         \common\models\Wall
+ * @var $userView      User пользователь, которому показываем
+ * @var $status        int статус, подписался, отписался @see SubscribeUser::STATUS_*
+ * @var $userTo        User список пользователей, на которых подписались
+ * @var $userFrom      User пользователь который подписался
+ */
+
+use common\helpers\Time;
+use common\models\User;
+use common\models\Wall\SubscribeUser;
+
+?>
+<div class="col-md-6">
+	<div class="panel panel-default">
+		<div class="panel-body item">
+			<a href="<%= dt.model.userFrom.link.home%>"><%= dt.model.userFrom.username%></a> <small class="text-muted"><%=dt.data.status?'подписался на':'отписался от'%> пользователя</small> <a href="<%= dt.model.userFrom.link.home%>"><%= dt.model.userTo.username%></a>
+			<br/>
+			<%=dt.date%>
+			<hr class="row separator"/>
+			<div class="text-center">
+				<a href="<%= dt.model.userFrom.link.home%>">
+					<%= Helper.html.avatar(dt.model.userFrom,'md',{
+						"class":"img-circle user-from",
+						"title":dt.model.userTo.username,
+						"alt":dt.model.userTo.username
+					})%>
+				</a>
+				<a href="<%= dt.model.userTo.link.home%>">
+					<%= Helper.html.avatar(dt.model.userTo,'md',{
+					"class":"img-circle user-to",
+					"title":dt.model.userTo.username,
+					"alt":dt.model.userTo.username
+					})%>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>

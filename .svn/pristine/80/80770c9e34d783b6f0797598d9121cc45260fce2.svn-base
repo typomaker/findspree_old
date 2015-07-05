@@ -1,0 +1,84 @@
+<?php
+
+namespace common\models;
+
+use Yii;
+use yii\behaviors\TimestampBehavior;
+
+/**
+ * This is the model class for table "event_show".
+ * @property string  $id
+ * @property integer $event_id
+ * @property string  $uniqid
+ * @property string  $created
+ * @property string  $user_id
+ */
+class EventShow extends \yii\db\ActiveRecord
+{
+	public function behaviors()
+	{
+		return [
+			[
+				'class'              => TimestampBehavior::className(),
+				'createdAtAttribute' => 'created',
+				'updatedAtAttribute' => false,
+			],
+		];
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public static function tableName()
+	{
+		return 'event_show';
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function rules()
+	{
+		return [
+			[['event_id', 'uniqid'], 'required'],
+			[['event_id'], 'integer'],
+			[['uniqid'], 'string', 'max' => 40],
+			[['uniqid'], 'unique']
+		];
+	}
+
+	public static function showed(Event $event)
+	{
+		$params = [
+			'event_id' => $event->id,
+		];
+		if (Yii::$app->user->isGuest) {
+			$uniqid = Yii::$app->request->userIP;
+		} else {
+			$uniqid            = Yii::$app->user->id;
+			$params['user_id'] = $uniqid;
+		}
+		if (!$uniqid)
+			return false;
+		$uniqid = md5($uniqid.'sss'.$event->id.'+s+');
+		if (!self::find()->where(['uniqid' => $uniqid])->exists()) {
+			$object = new self(array_merge($params, [
+				'uniqid' => $uniqid,
+			]));
+			return $object->insert();
+		}
+		return false;
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function attributeLabels()
+	{
+		return [
+			'id'       => 'ID',
+			'event_id' => 'Event ID',
+			'uniqid'   => 'Uniqid',
+		];
+	}
+}

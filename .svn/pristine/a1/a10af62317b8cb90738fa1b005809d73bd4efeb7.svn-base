@@ -1,0 +1,148 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: albert
+ * Date: 22.02.15
+ * Time: 3:57
+ * @var  $this          \yii\web\View
+ * @var  $model         \frontend\models\EventForm
+ * @var  $form          \yii\bootstrap\ActiveForm
+ * @var  $eventTypeList \common\models\EventType[]
+ * @var  $user          \common\models\User
+ */
+
+
+\frontend\assets\EventCreateAsset::register($this);
+?>
+<?php $form = \yii\bootstrap\ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
+<?= $form->field($model, 'geoCoordinates', ['template' => '{input}'])->hiddenInput()->label(false); ?>
+<?= $form->field($model, 'geoDescription', ['template' => '{input}'])->hiddenInput()->label(false); ?>
+	<div id="form-event-new" class="row">
+		<div class="item col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<?= $form->field($model, 'img')->label(
+						'Выберите изображение',
+						['class' => 'btn btn-info btn-block']
+					)->fileInput(
+						[
+							'class'  => 'hidden',
+							'accept' => 'image/*',
+						]
+					); ?>
+					<div id="avatar-preview" class="avatar-preview center-block"
+						 style="display: none;height: 200px; background-size:cover;background-position: center;">
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<?= $form->field($model, 'type')->dropDownList(
+						\yii\helpers\ArrayHelper::getColumn($eventTypeList, 'name')
+					); ?>
+					<?= $form->field($model, 'site')->textInput(['placeholder' => 'http://...']); ?>
+					<?= $form->field($model, 'begin')->textInput(['placeholder' => '16.11.1992 6:30']); ?>
+					<?= $form->field($model, 'end')->textInput(['placeholder' => '16.11.' . date('Y') . ' 6:30']); ?>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<?= $form->field($model, 'geoTitle')->textInput(['placeholder' => 'Город, Улица, Дом...']); ?>
+					<div id="map"></div>
+				</div>
+			</div>
+			<?= \yii\helpers\Html::submitButton('Сохранить', ['class' => 'btn btn-success btn-block']); ?>
+		</div>
+		<div class="col-md-8">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<?= $form->field($model, 'name')->textInput(['placeholder' => '...']); ?>
+					<?= $form->field($model, 'description')->textarea(
+						[
+							'rows'            => 15,
+							'contenteditable' => 'true',
+							'placeholder'     => '...'
+						]
+					); ?>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<?= $form->field($model, 'tag', ['inputOptions' => ['class' => 'input-tag']]); ?>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<label for="">Стоимость</label>
+
+					<div class="price-list">
+						<?php foreach ($model->getPrice() as $key => $eventPrice):
+							$containerIdCost = 'eventprice-container-cost-' . $key;
+							$containerIdDescription = 'eventprice-container-description-' . $key;
+							$inputIdCost = "eventprice-cost-$key";
+							$inputIdDescription = "eventprice-description-$key";
+
+							?>
+							<div class="row price-row">
+								<div class="col-md-3">
+									<?= $form->field(
+										$eventPrice,
+										'cost',
+										[
+											'options'   => [
+												'id'    => $containerIdCost,
+												'class' => 'price-container'
+											],
+											'selectors' => [
+												'container'    => '#' . $containerIdCost,
+												'input' => '#' . $inputIdCost
+											]
+										]
+									)->label(false)->textInput(
+										[
+											'id'          => $inputIdCost,
+											'name'        => "EventPrice[$key][cost]",
+											'placeholder' => 'Бесплатно'
+										]
+									); ?>
+								</div>
+								<div class="col-md-8">
+									<?= $form->field(
+										$eventPrice,
+										'description',
+										[
+											'options'   => [
+												'id'    => $containerIdDescription,
+												'class' => 'price-container'
+											],
+											'selectors' => [
+												'container'    => '#' . $containerIdDescription,
+												'input' => '#' . $inputIdDescription,
+											]
+										]
+									)->label(false)->textInput(
+										[
+											'id'          => $inputIdDescription,
+											'name'        => "EventPrice[$key][description]",
+											'placeholder' => 'Описание'
+										]
+									); ?>
+								</div>
+								<div class="col-md-1 text-center">
+									<i class="md md-add md-2x price-add-row text-muted no-select"
+									   style="cursor: pointer"></i>
+								</div>
+							</div>
+						<?php endforeach ?>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+<?php $form->end() ?>
