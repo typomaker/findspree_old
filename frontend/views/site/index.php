@@ -62,7 +62,7 @@ Yii::$app->view->registerMetaTag([
     </div>
 </div>
 <script id="tpl-event-item" data-remote="<?= \yii\helpers\Url::to(['event/index']); ?>" type="text/html">
-    <div class="col-sm-6 col-xs-12 col-md-4 col-lg-3  item">123
+    <div class="col-sm-6 col-xs-12 col-md-4 col-lg-3  item">
         <?= $this->renderFile('@app/views/tpl/event-box.php'); ?>
     </div>
 </script>
